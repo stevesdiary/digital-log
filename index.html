@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Visitors Log</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+  <div class="mode">
+    <i class="fa fa-sun-o"></i>
+    <i class="fa fa-moon-o"> </i>
+    Dark mode:            
+    <span class="change">OFF</span>
+  </div>
+    <div class="center">
+      <!-- <img id="logo" src="./resources/logo.png" alt="logo" srcset=""> -->
+      <h2>Logo</h2>
+      <form method="post">
+        <div class="text_field">
+          <label>Email</label>
+          <input type="text" placeholder="Enter your email" required>
+        </div>
+
+        <div class="text_field">
+          <label>Password</label>
+          <input type="password" placeholder="***********" required>
+        </div>
+
+        <div style="font-size: small;" class="pass">Forgot Password? <a href="#"/>Click here</div>
+        <input id="button" type="submit" value="Login">
+        <div class="signup_link">Not a member? <a href="#">Signup</a>
+        </div>
+      </form>
+    </div>
+  <script>
+    $( ".change" ).on("click", function() {
+      if( $( "body" ).hasClass( "dark" )) {
+        $( "body" ).removeClass( "dark" );
+        $( ".change" ).text( "OFF" );
+      } else {
+        $( "body" ).addClass( "dark" );
+        $( ".change" ).text( "ON" );
+        }
+      });
+  </script>
+  </body>
+</html>
