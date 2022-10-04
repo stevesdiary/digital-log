@@ -52,19 +52,21 @@ app.post('/entry', (req, res)=>{
    )
 })
 app.patch('/update', (req, res) => {
-   const body = req.body
-   const payed = `SELECT , toRepay FROM loan WHERE id = '${id}'`
+   const data = req.body
+   // const payed = `SELECT , toRepay FROM loan WHERE id = '${id}'`
    data.departure = dayjs().format('YYYY-MM-DD HH:mm:ss') 
    const query = "UPDATE `visitors`\
    SET \
-   departure = '"+body.departure+"',\
-   approvedBy = '"+body.approvedBy+"' \
-   WHERE id = '"+body.id+"'"
+   gender = '"+ data.gender +"', \
+   purpose = '"+ data.purpose +"', \
+   departure = '"+data.departure+"', \
+   approvedBy = '"+data.approvedBy+"' \
+   WHERE id = '"+data.id+"'"
    connection.query(
       query,
       function (error, result) {
          console.error(error, result)
-         result.send(result != null && result.length > 0 ? result : "Update failed! ccheck your query" + error)
+         res.send(result != null ? 'Update successful!' : 'An error occoured! '+ error)
       }
    );
 })
