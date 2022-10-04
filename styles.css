@@ -19,10 +19,10 @@
   align-content: center;
   text-align:center;
   } */
-
-  h2{
-  color: #0b33c2;
-  }
+#logo {
+  width: 100px;
+  height: 100px;
+}
 
   button{
       cursor: pointer;
@@ -41,5 +41,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: left;
 }
 

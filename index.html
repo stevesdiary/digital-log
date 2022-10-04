@@ -13,15 +13,12 @@
 
 
 <body>
-  <div class="mode">
-    <i class="fa fa-sun-o"></i>
-    <i class="fa fa-moon-o"> </i>
-    Dark mode:            
-    <span class="change">OFF</span>
-  </div>
+  
+  <button onclick="myFunction()">Switch mode</button>
+
     <div class="center">
-      <!-- <img id="logo" src="./resources/logo.png" alt="logo" srcset=""> -->
-      <h2>Logo</h2>
+      <img id="logo" src="./resources/logo.png" alt="logo" srcset="">
+      <!-- <h2>Logo</h2> -->
       <form method="post">
         <div class="text_field">
           <label>Email</label>
@@ -39,16 +36,35 @@
         </div>
       </form>
     </div>
+    <hr>
+
   <script>
-    $( ".change" ).on("click", function() {
-      if( $( "body" ).hasClass( "dark" )) {
-        $( "body" ).removeClass( "dark" );
-        $( ".change" ).text( "OFF" );
-      } else {
-        $( "body" ).addClass( "dark" );
-        $( ".change" ).text( "ON" );
-        }
-      });
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark");
+    }
   </script>
+  <div class="log">
+    <form action="submit">
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text"placeholder="First Name">
+        <label for="fname">Last Name</label>
+        <input type="text"placeholder="Last Name"> <br> 
+        <label for="fname">Purpose</label>
+        <textarea id="purpose" rows="3" cols="20" placeholder="Reason for visit"></textarea>
+        <label for="host">Host</label>
+        <input type="text-area 3"placeholder="First & Last Name"> <br>
+        <label for="date">Date</label>
+        <input id="date" type="date">
+        <label for="arrival">Arrival</label>
+        <input id="arrival" type="time">
+        <label for="departure">Departure</label>
+        <input id="departure" type="time">
+        
+      </div>
+    </form>
+  </div>
+
   </body>
 </html>
