@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const dayjs = require('dayjs');
 const mysql = require('mysql2');
-const { uuid } = require('uuidv4');
-const moment = require('moment');
-const { randomUUID } = require('crypto');
-const { timeStamp } = require('console');
-const { now } = require('moment');
+// const { uuid } = require('uuidv4');
+// const moment = require('moment');
+// const { randomUUID } = require('crypto');
+// const { timeStamp } = require('console');
+// const { now } = require('moment');
 
 require('dotenv').config();
 
@@ -86,7 +86,8 @@ app.get('/log', (req, res) => {
 app.get('/search', (req, res) => {
    const {body} =  req.params
    console.log(req.params)
-   const query = "SELECT * FROM `visitors` WHERE `firstName` = '" + body + "'"  //' OR `lastName` = '" + body + "
+   const query = "SELECT * FROM `visitors` \
+   WHERE `firstName` = '" + body + "'"  //' OR `lastName` = '" + body + "
    connection.query(
       query, 
       function (error, result) {
@@ -105,7 +106,7 @@ app.get('/:id', (req, res)=>{
       query,
       function(error, result){
          console.log(result,  error)
-         res.send(result != null ? result : 'Cannot process query')
+         res.send(result != null ? result : 'Cannot process query. ' + error)
       }
    );
 })
