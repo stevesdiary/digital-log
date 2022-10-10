@@ -70,9 +70,10 @@ app.patch('/update', (req, res) => {
       }
    );
 })
-app.get('/log', (req, res) => {
-   const {body} =  req.body
-   const query = "SELECT * FROM `visitors` WHERE `firstName` = '" + body + "'"
+
+// Get all logs
+app.get('/getall', (req, res) => {
+   const query = "SELECT * FROM `visitors` "
    connection.query(
       query,
       function (error, result) {
@@ -84,10 +85,9 @@ app.get('/log', (req, res) => {
 
 //Fetch visitor by name
 app.get('/search', (req, res) => {
-   const {body} =  req.params
+   const body =  req.body.firstName
    console.log(req.params)
-   const query = "SELECT * FROM `visitors` \
-   WHERE `firstName` = '" + body + "'"  //' OR `lastName` = '" + body + "
+   const query = "SELECT * FROM `visitors` WHERE `firstName` LIKE '%" + body + "%' OR `lastName` = '" + body + "'"
    connection.query(
       query, 
       function (error, result) {
@@ -111,7 +111,7 @@ app.get('/:id', (req, res)=>{
    );
 })
 
-//Delete log by id(good)
+//Delete log by id
 app.delete('/delete/:id', (req, res)=>{
    const { id } = req.params
    console.log(req.params)
@@ -126,7 +126,7 @@ app.delete('/delete/:id', (req, res)=>{
 })
 
 
-// Delete entry by ID (good)
+// Delete entry by ID 
 app.delete('/:id', (req, res) => {
    const { id } = req.params
 
@@ -135,7 +135,7 @@ app.delete('/:id', (req, res) => {
          query, 
          function(error, result) { 
          console.log(result, error)
-         res.send(result != null ? result : "Caanot process Query")
+         res.send(result != null ? result : "Cannot process Query")
       }
    );
 })
