@@ -87,7 +87,7 @@ app.get('/getall', (req, res) => {
 app.get('/search', (req, res) => {
    const body =  req.body.firstName
    console.log(req.params)
-   const query = "SELECT * FROM `visitors` WHERE `firstName` LIKE '%" + body + "%' OR `lastName` = '" + body + "'"
+   const query = "SELECT * FROM `visitors` WHERE `firstName` LIKE '%" + body + "' OR `lastName` LIKE '%" + body + "'"
    connection.query(
       query, 
       function (error, result) {
